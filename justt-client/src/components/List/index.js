@@ -12,7 +12,7 @@ const List = ({ items, children }) => {
 
 List.propTypes = {
     items: PropTypes.array,
-    children: PropTypes.arrayOf(PropTypes.element)
+    children: PropTypes.func
 };
 
 export default React.memo(List);

@@ -1,4 +1,4 @@
-# Justt billing app
+# Justt billing system
 
 ## Available Scripts
 
@@ -23,4 +23,7 @@ also since its a billing system , its important to ensure ACID compliance (Atomi
 Add unit and system tests (frontend and backend)
 Add schema validation in the backend (joi).
 Use migrations to create initial data. 
+Add types to models in the backend. 
+
+
 

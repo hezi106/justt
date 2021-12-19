@@ -9,7 +9,7 @@ import { errorConverter, errorHandler } from './middlewares/error';
 import ApiError from './utils/ApiError';
 import customers from './customers.json';
 import transactions from './transactions.json';
-import { CustomerModel , TransactionModel } from './models';
+import { CustomerModel, TransactionModel } from './models';
 import sequelize from './models/db';
 
 const app = express();
@@ -20,22 +20,16 @@ sequelize.sync({ force: true }).then(async () => {
   await TransactionModel.bulkCreate(transactions);
 });
 
-// set security HTTP headers
 app.use(helmet());
 
-// parse json request body
 app.use(express.json());
 
-// parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
 
-// gzip compression
 app.use(compression());
 
-// enable cors
 app.use(cors());
 
-// v1 api routes
 app.use('/api', routes);
 
 // send back a 404 error for any unknown api request

@@ -1,4 +1,4 @@
-import { Dialect } from "sequelize";
+import { Dialect } from 'sequelize';
 import dotenv from 'dotenv';
 import path from 'path';
 
@@ -9,9 +9,9 @@ export default {
   host: process.env.DB_HOST || 'localhost',
   username: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '123456',
-  database: process.env.DB_NAME || '',
-  port: parseInt(process.env.DB_PORT!) || 6868,
-  dialect: <Dialect> 'mysql',
+  database: process.env.DB_NAME || 'justt',
+  port: parseInt(process.env.DB_PORT!) || 3006,
+  dialect: <Dialect>'mysql',
   pool: {
     max: 5,
     min: 0,

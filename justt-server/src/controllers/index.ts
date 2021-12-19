@@ -1,3 +1,3 @@
-import * as transactionController from'./transaction.controller';
+import * as transactionController from './transaction.controller';
 
 export default transactionController;

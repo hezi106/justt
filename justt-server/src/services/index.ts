@@ -1,5 +1,3 @@
-import * as transactionService from'./transaction.service';
+import * as transactionService from './transaction.service';
 
-export {
-    transactionService
-}
+export { transactionService };

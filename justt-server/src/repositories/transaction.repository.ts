@@ -3,6 +3,10 @@ import { Transaction } from 'sequelize';
 import { TransactionModel, CustomerModel } from '../models';
 import ApiError from '../utils/ApiError';
 
+const createTransaction = async (transactionBody: any, t: Transaction) => {
+  return TransactionModel.create(transactionBody, { transaction: t });
+};
+
 const getAllTransactions = async () => {
   const transactions = await TransactionModel.findAll({
     include: {
@@ -33,4 +37,13 @@ const updateTransactionById = async (transactionId: string, transactionBody: any
   return transaction;
 };
 
-export { updateTransactionById, getAllTransactions, getTransactionById };
+const deleteTransactionById = async (transactionId: string, t: Transaction) => {
+  const transaction = await getTransactionById(transactionId, t);
+  if (!transaction) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Transaction not found');
+  }
+  await transaction.destroy({ transaction: t });
+  return transaction;
+};
+
+export { createTransaction, updateTransactionById, deleteTransactionById, getAllTransactions, getTransactionById };

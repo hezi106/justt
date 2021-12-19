@@ -1,4 +1,3 @@
-
 import httpStatus from 'http-status';
 import ApiError from '../utils/ApiError';
 import catchAsync from '../utils/catchAsync';
@@ -15,7 +14,7 @@ const getAllTransactions = catchAsync(async (req: any, res: any) => {
 });
 
 const getTransactionById = catchAsync(async (req: any, res: any) => {
-  const transaction = await transactionService.getFullTransactionById(req.params.transactionId , null);
+  const transaction = await transactionService.getFullTransactionById(req.params.transactionId, null);
   if (!transaction) {
     throw new ApiError(httpStatus.NOT_FOUND, 'transaction not found');
   }
@@ -32,10 +31,4 @@ const deleteTransaction = catchAsync(async (req: any, res: any) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
-export {
-  createTransaction,
-  getTransactionById,
-  getAllTransactions,
-  updateTransaction,
-  deleteTransaction,
-};
+export { createTransaction, getTransactionById, getAllTransactions, updateTransaction, deleteTransaction };

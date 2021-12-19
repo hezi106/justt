@@ -1,7 +1,6 @@
-
-import {Transaction}  from 'sequelize';
-import sequelize from '../models/db'
-import { customerRepository , transactionRepository } from '../repositories/index';
+import { Transaction } from 'sequelize';
+import sequelize from '../models/db';
+import { customerRepository, transactionRepository } from '../repositories';
 
 const createFullTransaction = async (transactionBody: any) => {
   const t = await sequelize.transaction();
@@ -9,7 +8,10 @@ const createFullTransaction = async (transactionBody: any) => {
   let transaction;
   try {
     customer = await customerRepository.createCustomer(transactionBody.customer, t);
-    transaction = await customer.createTransaction(transactionBody.transaction , {transaction: t});
+    transaction = await transactionRepository.createTransaction(
+      { ...transactionBody.transaction, customer_id: customer.id },
+      t
+    );
     await t.commit();
   } catch (err: any) {
     await t.rollback();
@@ -22,8 +24,8 @@ const getAllFullTransactions = async () => {
 };
 
 const getFullTransactionById = async (transactionId: string, t: Transaction | null) => {
-  return await transactionRepository.getTransactionById(transactionId, t)
-}
+  return await transactionRepository.getTransactionById(transactionId, t);
+};
 
 const updateFullTransactionById = async (transactionId: string, transactionBody: any) => {
   const t = await sequelize.transaction();
@@ -31,8 +33,8 @@ const updateFullTransactionById = async (transactionId: string, transactionBody:
   let updatedTransaction;
   try {
     transaction = await transactionRepository.getTransactionById(transactionId, t);
-    await customerRepository.updateCustomerById(transaction.customer_id , transactionBody.customer , t);
-    updatedTransaction = await transactionRepository.updateTransactionById(transaction.id, transactionBody.transaction , t);
+    await customerRepository.updateCustomerById(transaction.customer_id, transactionBody.customer, t);
+    updatedTransaction = await transactionRepository.updateTransactionById(transaction.id, transactionBody.transaction, t);
     await t.commit();
   } catch (err: any) {
     await t.rollback();
@@ -46,7 +48,7 @@ const deleteFullTransactionById = async (transactionId: string) => {
   try {
     transaction = await getFullTransactionById(transactionId, t);
     await customerRepository.deleteCustomerById(transaction.customer.id, t);
-    await transaction.destroy({ transaction: t });
+    await transactionRepository.deleteTransactionById(transaction.id, t);
     await t.commit();
   } catch (err: any) {
     await t.rollback();
