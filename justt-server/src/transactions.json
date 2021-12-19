@@ -1,0 +1,17 @@
+[
+  {
+    "customer_id":"a907f884-8c35-4d66-ba3d-46614ae8322f",
+    "currency":"NIO",
+    "amount":10
+  },
+  {
+    "customer_id":"3794c431-6a64-4117-8be3-e28c9b542654",
+    "currency": "IDR",
+    "amount":44
+  },
+  {
+    "customer_id":"0bc9ba34-20be-40ce-87ad-24c589b49a0b",
+    "currency": "CUP",
+    "amount":123
+  }
+]

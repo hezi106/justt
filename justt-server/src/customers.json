@@ -1,0 +1,26 @@
+[
+  {
+    "id":"a907f884-8c35-4d66-ba3d-46614ae8322f",
+    "first_name":"Benedikt",
+    "last_name":"Abberley",
+    "email":"babberley0@artisteer.com",
+    "credit_card_type":"mastercard",
+    "credit_card_number":"5010126046192324"
+  },
+  {
+    "id":"3794c431-6a64-4117-8be3-e28c9b542654",
+    "first_name":"Ellwood",
+    "last_name":"Speirs",
+    "email":"espeirs1@mediafire.com",
+    "credit_card_type":"visa-electron",
+    "credit_card_number":"4508672811329403"
+  },
+  {
+    "id":"0bc9ba34-20be-40ce-87ad-24c589b49a0b",
+    "first_name":"Gray",
+    "last_name":"Slucock",
+    "email":"gslucock2@wufoo.com",
+    "credit_card_type":"jcb",
+    "credit_card_number":"3537300561420746"
+  }
+]
