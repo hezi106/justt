@@ -3,12 +3,12 @@ import transactionController from '../controllers';
 
 const router = express.Router();
 
-router.route('/').post(transactionController.createTransaction).get(transactionController.getAllTransactions);
+router.route('/').post(transactionController.createFullTransaction).get(transactionController.getAllFullTransactions);
 
 router
   .route('/:transactionId')
-  .get(transactionController.getTransactionById)
-  .patch(transactionController.updateTransaction)
-  .delete(transactionController.deleteTransaction);
+  .get(transactionController.getFullTransactionById)
+  .patch(transactionController.updateFullTransactionById)
+  .delete(transactionController.deleteFullTransactionById);
 
 export default router;
